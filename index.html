@@ -17,9 +17,25 @@
     <script type="text/javascript" src="js/lib/angular.js"></script>
     <script type="text/javascript" src="js/lib/angular-route.js"></script>
     <script type="text/javascript" src="js/lib/angular-animate.min.js"></script>
+
+    <!-- firebase -->
+    <script src="https://www.gstatic.com/firebasejs/3.2.1/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyA4OAlKrt-T6RUn2NsYxeQFxytKi-DyJbc",
+        authDomain: "gout-tracker.firebaseapp.com",
+        databaseURL: "https://gout-tracker.firebaseio.com",
+        storageBucket: "gout-tracker.appspot.com",
+      };
+      firebase.initializeApp(config);
+    </script>
+
     <script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript" src="js/controllers/registration.js"></script>
     <script type="text/javascript" src="js/controllers/success.js"></script>
+    <script type="text/javascript" src="js/services/authentication.js"></script>
   </head>
   <body>
     <header>
@@ -30,18 +46,4 @@
       </main>
     </div>
   </body>
-
-  <!-- firebase -->
-  <script src="https://www.gstatic.com/firebasejs/3.2.1/firebase.js"></script>
-  <script>
-    // Initialize Firebase
-    var config = {
-      apiKey: "AIzaSyA4OAlKrt-T6RUn2NsYxeQFxytKi-DyJbc",
-      authDomain: "gout-tracker.firebaseapp.com",
-      databaseURL: "https://gout-tracker.firebaseio.com",
-      storageBucket: "gout-tracker.appspot.com",
-    };
-    firebase.initializeApp(config);
-  </script>
-
 </html>
