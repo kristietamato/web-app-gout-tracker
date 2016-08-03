@@ -21,5 +21,4 @@ myApp.factory('Authentication', ['$rootScope', '$firebaseAuth', 'FIREBASE_DB_URL
       });
     }
   };
-
 }]);
