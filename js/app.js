@@ -1,5 +1,4 @@
-var myApp = angular.module('myApp', ['ngRoute', 'firebase'])
-.constant('FIREBASE_DB_URL', 'https://gout-tracker.firebaseio.com/');
+var myApp = angular.module('myApp', ['ngRoute', 'firebase']);
 
 myApp.config(['$routeProvider', function($routeProvider) {
   $routeProvider.

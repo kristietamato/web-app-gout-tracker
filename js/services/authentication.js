@@ -1,22 +1,16 @@
-myApp.factory('Authentication', ['$rootScope', '$firebaseAuth', 'FIREBASE_DB_URL',
-  function($rootScope, $firebaseAuth, FIREBASE_DB_URL) {
+myApp.factory('Authentication', ['$rootScope', '$firebase',
+function($rootScope, $firebase) {
 
-  var ref = new Firebase(FIREBASE_DB_URL);
-  var auth = $firebaseAuth(ref);
+  var auth = firebase.auth();
 
   return {
-    login: function(user) {
+    login: function (user) {
       $rootScope.message = "Welcome " + $scope.user.email;
     },
 
-    register: function(user) {
-      auth.$createUser({
-        email: user.email,
-        password: user.password
-      }).then(function(regUser) {
-        $rootScope.message = "Hi " + user.firstname +
-        ", Thanks for registering";
-      }).catch(function(error) {
+    register: function (user) {
+      auth.createUserWithEmailAndPassword(user.email, user.password)
+      .catch(function (error) {
         $rootScope.message = error.message;
       });
     }
