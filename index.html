@@ -12,13 +12,17 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    <!-- Styling -->
     <link href='https://fonts.googleapis.com/css?family=Lato:400,100,700,900' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/style.css">
+
+    <!-- Angular libraries -->
     <script type="text/javascript" src="js/lib/angular.js"></script>
     <script type="text/javascript" src="js/lib/angular-route.js"></script>
     <script type="text/javascript" src="js/lib/angular-animate.min.js"></script>
 
-    <!-- firebase -->
+    <!-- Firebase Auth -->
     <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
     <script src="https://www.gstatic.com/firebasejs/3.2.1/firebase.js"></script>
     <script>
@@ -33,11 +37,14 @@
     </script>
     <script src="https://cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script>
 
+    <!-- My scripts -->
     <script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript" src="js/services/authentication.js"></script>
     <script type="text/javascript" src="js/controllers/registration.js"></script>
     <script type="text/javascript" src="js/controllers/success.js"></script>
+  
   </head>
+  
   <body>
     <header>
       <nav class="cf" ng-include="'partials/nav.html'"></nav>
@@ -47,4 +54,5 @@
       </main>
     </div>
   </body>
+
 </html>
