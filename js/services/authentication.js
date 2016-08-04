@@ -5,12 +5,19 @@ function($rootScope, $firebase) {
 
   return {
     login: function (user) {
-      $rootScope.message = "Welcome " + $scope.user.email;
+      auth.signInWithCredential(user.email,  user.password)
+      .then(function() {
+        $rootScope.message = "Hello " + user.firstname;
+      }).catch(function (error) {
+        $rootScope.message = error.message;
+      });
     },
 
     register: function (user) {
       auth.createUserWithEmailAndPassword(user.email, user.password)
-      .catch(function (error) {
+      .then(function(user) {
+        $rootScope.message = "Thanks for registering, " + user.firstname;
+      }).catch(function (error) {
         $rootScope.message = error.message;
       });
     }
