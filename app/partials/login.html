@@ -1,0 +1,24 @@
+<section class="card login">
+
+  <form name="myform" ng-submit="login()" novalidate>
+
+    <div class="textintro">
+      <h1>Gout Tracker</h1>
+      <p>Log-in to add changes and access your data.</p>
+      <p class="message" ng-show="message">{{ message }}</p>
+    </div>
+
+    <fieldset>
+      <input type="email" name="email" placeholder="Email"
+        ng-model="user.email" ng-required="true">
+      <p class="error" ng-show="myform.email.$invalid && myform.email.$touched">Pleast enter a valid email.</p>
+      <input type="password" name="password" placeholder="Password"
+        ng-model="user.password" ng-required="true">
+      <p class="error" ng-show="myform.password.$invalid && myform.password.$touched">Pleast enter your password.</p>
+    </fieldset>
+
+    <button type="submit" class="btn" ng-disabled="myform.$invalid">Login</button>
+    <p>or <a href="#/register">register</a></p>
+  </form>
+
+</section>

@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gout Tracker</title>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Styling -->
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,100,700,900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Angular libraries -->
+    <script type="text/javascript" src="js/lib/angular.js"></script>
+    <script type="text/javascript" src="js/lib/angular-route.js"></script>
+    <script type="text/javascript" src="js/lib/angular-animate.min.js"></script>
+
+    <!-- Firebase Auth -->
+    <script src="https://www.gstatic.com/firebasejs/3.2.1/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyA4OAlKrt-T6RUn2NsYxeQFxytKi-DyJbc",
+        authDomain: "gout-tracker.firebaseapp.com",
+        databaseURL: "https://gout-tracker.firebaseio.com",
+        storageBucket: "gout-tracker.appspot.com",
+      };
+      firebase.initializeApp(config);
+    </script>
+    <script src="https://cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script>
+
+    <!-- My scripts -->
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/services/auth.service.js"></script>
+    <script type="text/javascript" src="js/controllers/auth.controller.js"></script>
+    <script type="text/javascript" src="js/controllers/success.controller.js"></script>
+  
+  </head>
+  
+  <body>
+    <header>
+      <nav class="cf" ng-include="'partials/nav.html'"></nav>
+    </header>
+    <div class="page">
+      <main class="cf" ng-view>
+      </main>
+    </div>
+  </body>
+
+</html>
