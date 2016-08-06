@@ -1,10 +1,13 @@
+<header>
+  <nav class="cf" ng-include="'partials/nav.html'"></nav>
+</header>
+
 <section class="card login">
 
   <form name="myform" ng-submit="login()" novalidate>
 
     <div class="textintro">
-      <h1>Gout Tracker</h1>
-      <p>Log-in to add changes and access your data.</p>
+      <p>Please log-in to add changes and access your data.</p>
       <p class="message" ng-show="message">{{ message }}</p>
     </div>
 

@@ -11,7 +11,9 @@ function($rootScope, $firebase, $location) {
           $location.path('/success');
         });
       }).catch(function (error) {
-        $rootScope.message = error.message;
+        $rootScope.$apply(function (){
+          $rootScope.message = error.message;
+        });
       });
     },
 
@@ -22,7 +24,9 @@ function($rootScope, $firebase, $location) {
           $location.path('/success');
         });
       }).catch(function (error) {
-        $rootScope.message = error.message;
+        $rootScope.$apply(function (){
+          $rootScope.message = error.message;
+        });
       });
     }
   };
