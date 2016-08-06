@@ -4,15 +4,18 @@ myApp.config(['$routeProvider', function($routeProvider) {
   $routeProvider.
     when('/login', {
       templateUrl: 'partials/login.html',
-      controller: 'RegistrationController'
+      controller: 'AuthController',
+      controllerAs: 'authCtrl'
     }).
     when('/register', {
       templateUrl: 'partials/register.html',
-      controller: 'RegistrationController'
+      controller: 'AuthController',
+      controllerAs: 'authCtrl'
     }).
     when('/success', {
       templateUrl: 'partials/success.html',
-      controller: 'SuccessController'
+      controller: 'SuccessController',
+      controllerAs: 'authCtrl'
     }).
     otherwise({
       redirectTo: '/login'
