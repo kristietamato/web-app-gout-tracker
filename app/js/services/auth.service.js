@@ -5,7 +5,7 @@ function($rootScope, $firebase) {
 
   return {
     login: function (user) {
-      auth.signInWithCredential(user.email,  user.password)
+      auth.signInWithEmailAndPassword(user.email,  user.password)
       .then(function() {
         $rootScope.message = "Hello " + user.firstname;
       }).catch(function (error) {
