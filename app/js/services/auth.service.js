@@ -7,7 +7,6 @@ function($rootScope, $firebase, $location) {
     login: function (user) {
       auth.signInWithEmailAndPassword(user.email,  user.password)
       .then(function(authUser) {
-        $rootScope.message = "Hello, " + user.firstname;
         $location.path('/success');
       }).catch(function (error) {
         $rootScope.message = error.message;
@@ -17,7 +16,6 @@ function($rootScope, $firebase, $location) {
     register: function (user) {
       auth.createUserWithEmailAndPassword(user.email, user.password)
       .then(function(authuser) {
-        $rootScope.message = "Thanks for registering, " + user.firstname;
         $location.path('/success');
       }).catch(function (error) {
         $rootScope.message = error.message;
