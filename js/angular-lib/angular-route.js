@@ -1,3 +1,4 @@
+/* jshint ignore:start */
 /**
  * @license AngularJS v1.5.8
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -1067,3 +1068,5 @@ function ngViewFillContentFactory($compile, $controller, $route) {
 
 
 })(window, window.angular);
+
+/* jshint ignore:end */

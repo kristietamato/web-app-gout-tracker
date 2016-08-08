@@ -1,3 +1,4 @@
+/* jshint ignore:start */
 /**
  * @license AngularJS v1.5.8
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -4137,3 +4138,5 @@ angular.module('ngAnimate', [], function initAngularHelpers() {
 
 
 })(window, window.angular);
+
+/* jshint ignore:end */
