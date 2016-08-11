@@ -12,10 +12,10 @@ myApp.config(['$routeProvider', function($routeProvider) {
       controller: 'AuthController',
       controllerAs: 'authCtrl'
     }).
-    when('/success', {
-      templateUrl: 'logged-in/partials/success.html',
-      controller: 'SuccessController',
-      controllerAs: 'authCtrl'
+    when('/home', {
+      templateUrl: 'logged-in/partials/home.html',
+      controller: 'HomeController',
+      controllerAs: 'homeCtrl'
     }).
     otherwise({
       redirectTo: '/login'
