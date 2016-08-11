@@ -17,5 +17,5 @@ input.ng-valid.ng-touched {
 
 .error {
   color: red;
-  padding-bottom: 10px;
+  padding-bottom: 0px;
 }
