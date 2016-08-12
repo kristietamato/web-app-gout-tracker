@@ -22,7 +22,7 @@ myApp.config(['$routeProvider', function($routeProvider) {
       controller: 'EntryController',
       controllerAs: 'entryCtrl'
     }).
-    when('/entryHistory', {
+    when('/history', {
       templateUrl: 'logged-in/partials/entry-history.html',
       controller: 'HistoryController',
       controllerAs: 'historyCtrl'
