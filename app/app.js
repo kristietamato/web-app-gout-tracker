@@ -17,6 +17,31 @@ myApp.config(['$routeProvider', function($routeProvider) {
       controller: 'HomeController',
       controllerAs: 'homeCtrl'
     }).
+    when('/entry', {
+      templateUrl: 'logged-in/partials/add-entry.html',
+      controller: 'EntryController',
+      controllerAs: 'entryCtrl'
+    }).
+    when('/entryHistory', {
+      templateUrl: 'logged-in/partials/entry-history.html',
+      controller: 'HistoryController',
+      controllerAs: 'historyCtrl'
+    }).
+    when('/analyze', {
+      templateUrl: 'logged-in/partials/analyze.html',
+      controller: 'AnalyzeController',
+      controllerAs: 'analyzeCtrl'
+    }).
+    when('/settings', {
+      templateUrl: 'logged-in/partials/settings.html',
+      controller: 'SettingsController',
+      controllerAs: 'settingsCtrl'
+    }).
+    when('/logout', {
+      templateUrl: 'logged-in/partials/logout.html',
+      controller: 'LogoutController',
+      controllerAs: 'logoutCtrl'
+    }).
     otherwise({
       redirectTo: '/login'
     });
