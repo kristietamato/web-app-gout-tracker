@@ -1,0 +1,36 @@
+<header>
+  <nav class="cf" ng-include="'authentication/partials/nav.html'"></nav>
+</header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-4">
+      <h5>Log-in to add changes and access your data.</h5>
+      <form class="form-signin" name="myform" ng-submit="login()" novalidate>
+        <div class="form-group row">
+          <div class="col-sm-5">
+            <input class="form-control" type="email" name="email"
+              placeholder="Email" ng-model="user.email" ng-required="true">
+            <p class="error" ng-show="myform.email.$invalid && myform.email.$touched">
+              Please enter a valid email.</p>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-5">
+            <input class="form-control" type="password" name="password" 
+              placeholder="Password" ng-model="user.password" ng-required="true">
+            <p class="error" ng-show="myform.password.$invalid && myform.password.$touched">
+              Please enter your password.</p>
+          </div>
+        </div>
+        <div class="form-group row text-center">
+          <div class="col-sm-5">
+            <p class="message error" ng-show="message">{{ message }}</p>
+            <button type="submit" ng-disabled="myform.$invalid" class="btn btn-primary">Log in</button>
+            <p>or <a href="#/register">register</a></p>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

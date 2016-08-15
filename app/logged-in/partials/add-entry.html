@@ -1,0 +1,67 @@
+<header>
+  <nav ng-include="'logged-in/partials/logged-in-nav.html'"></nav>
+</header>
+
+<div class="container">
+
+  <div class="jumbotron">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <h2>Add Entry</h2>
+
+          <form class="form-signin" name="myform" ng-submit="addEntry()" novalidate>
+            <div class="form-group">
+              <label for="daterange" class="control-label">Time frame</label>
+              <input date-range-picker id="daterange" name="daterange" class="form-control date-picker" type="text"ng-model="date" clearable="true" required />
+            </div>
+
+            <div class="form-group">
+              <label for="pain-level">Pain intensity</label>
+              <select class="form-control">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="joint">Joint affected</label>
+              <select class="form-control">
+                <option>Right big toe</option>
+                <option>Left big toe</option>
+                <option>Right ankle</option>
+                <option>Left ankle</option>
+                <option>Right elbow</option>
+                <option>Left elbow</option>
+                <option>Right finger(s)</option>
+                <option>Left finger(s)</option>
+                <option>Other joint(s)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="description">Description</label>
+              <textarea class="form-control" id="description" rows="4"></textarea>
+            </div>
+            <div class="form-group row text-center">
+              <div class="col-sm-11">
+                <p class="message error" ng-show="message">{{ message }}</p>
+                <button type="submit" ng-disabled="myform.$invalid" class="btn btn-primary">Add entry</button>
+              </div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div> <!-- /container -->

@@ -8,7 +8,7 @@ function($rootScope, $firebase, $location) {
       auth.signInWithEmailAndPassword(user.email,  user.password)
       .then(function(authUser) {
         $rootScope.$apply(function (){
-          $location.path('/success');
+          $location.path('/home');
         });
       }).catch(function (error) {
         $rootScope.$apply(function (){
@@ -21,7 +21,7 @@ function($rootScope, $firebase, $location) {
       auth.createUserWithEmailAndPassword(user.email, user.password)
       .then(function(authUser) {
         $rootScope.$apply(function (){
-          $location.path('/success');
+          $location.path('/home');
         });
       }).catch(function (error) {
         $rootScope.$apply(function (){

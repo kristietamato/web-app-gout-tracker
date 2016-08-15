@@ -13,13 +13,23 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <!-- Latest compiled and minified Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
     <!-- Styling -->
     <link href='https://fonts.googleapis.com/css?family=Lato:400,100,700,900' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/shared.css">
+    <link rel="stylesheet" href="css/custom.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-daterangepicker/2.1.13/daterangepicker.min.css" />
 
     <!-- Angular libraries -->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-    <script type="text/javascript" src="js/angular-lib/angular-route.js"></script>
+    <script type="text/javascript" src="components/angular-lib/angular-route.js"></script>
+    <script type="text/javascript" src="components/angular-lib/angular-daterangepicker.min.js"></script>
 
     <!-- Firebase Auth -->
     <script src="https://www.gstatic.com/firebasejs/3.2.1/firebase.js"></script>
@@ -36,18 +46,30 @@
     <script src="https://cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script>
 
     <!-- My scripts -->
-    <script type="text/javascript" src="js/app.js"></script>
-    <script type="text/javascript" src="js/services/auth.service.js"></script>
-    <script type="text/javascript" src="js/controllers/auth.controller.js"></script>
-    <script type="text/javascript" src="js/controllers/success.controller.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+    <script type="text/javascript" src="authentication/auth.service.js"></script>
+    <script type="text/javascript" src="authentication/auth.controller.js"></script>
+    <script type="text/javascript" src="logged-in/home.controller.js"></script>
+    <script type="text/javascript" src="logged-in/entry.controller.js"></script>
+    <script type="text/javascript" src="logged-in/history.controller.js"></script>
+    <script type="text/javascript" src="logged-in/logout.controller.js"></script>
   
   </head>
   
   <body>
-    <div class="page">
-      <main class="cf" ng-view>
+      <main ng-view>
       </main>
-    </div>
   </body>
 
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="components/js/jquery.min.js"><\/script>')</script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+  <script src="components/js/ie10-viewport-bug-workaround.js"></script>
+  <!-- Daterange picker scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-daterangepicker/2.1.13/daterangepicker.min.js"></script>
 </html>
