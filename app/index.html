@@ -42,8 +42,14 @@
         storageBucket: "gout-tracker.appspot.com",
       };
       firebase.initializeApp(config);
+      var storage = firebase.storage();
+
+      // Points to the root reference
+      var storageRef = firebase.storage().ref();
     </script>
-    <script src="https://cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script>
+
+    <!-- AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/2.0.1/angularfire.min.js"></script>
 
     <!-- My scripts -->
     <script type="text/javascript" src="app.js"></script>
