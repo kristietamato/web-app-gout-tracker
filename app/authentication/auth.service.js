@@ -23,7 +23,6 @@ function($rootScope, $firebase, $location) {
       auth.createUserWithEmailAndPassword(user.email, user.password)
       .then(function(newUser) {
         usersRef.child(newUser.uid).set({
-          date: Firebase.ServerValue.TIMESTAMP,
           firstname: user.firstname,
           lastname: user.lastname,
           email: user.email
