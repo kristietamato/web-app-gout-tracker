@@ -4,4 +4,7 @@ myApp.controller('EntryController', ['$scope', function($scope) {
           endDate: moment()
       };
   $scope.singleDate = moment();
+  $scope.painLevel = null;
+  $scope.joint = null;
+  $scope.description = null;
 }]);
