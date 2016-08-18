@@ -10,4 +10,8 @@ myApp.controller('AuthController',
     Authentication.register($scope.user);
   }; // register
 
+  $scope.logout = function() {
+    Authentication.logout($scope.user);
+  }; // logout
+
 }]); // Controller

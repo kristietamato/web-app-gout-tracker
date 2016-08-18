@@ -1,9 +1,24 @@
-myApp.factory('Authentication', ['$rootScope', '$firebase', '$location',
-function($rootScope, $firebase, $location) {
+myApp.factory('Authentication',
+['$rootScope', '$firebase', '$location', '$firebaseObject',
+function($rootScope, $firebase, $location, $firebaseObject) {
 
   var auth = firebase.auth();
   var database = firebase.database();
   var usersRef = database.ref('users');
+  var dataRef = usersRef.child('entries');
+
+  auth.onAuthStateChanged(function(authUser) {
+    if (authUser) {
+        var userRef = database.ref('users/' + authUser.uid);
+        var userObj = $firebaseObject(userRef);
+        $rootScope.currentUser = userObj;
+    } else {
+      $rootScope.currentUser = '';
+      $rootScope.$apply(function (){
+        $location.path('/login');
+      });
+    }
+  });
 
   return {
     login: function (user) {
@@ -28,12 +43,29 @@ function($rootScope, $firebase, $location) {
           email: user.email
         });
         $rootScope.$apply(function (){
-          $location.path('/home');
+          $rootScope.message = "Thank you for registering, " + user.firstname;
         });
       }).catch(function (error) {
         $rootScope.$apply(function (){
           $rootScope.message = error.message;
         });
+      });
+    },
+
+    addEntry: function (entry) {
+      dataRef.update({
+        painLevel: entry.painLevel,
+        joint: entry.joint
+      });
+    },
+
+    logout: function () {
+      auth.signOut().then(function() {
+        $rootScope.$apply(function (){
+          $location.path('/login');
+        });
+      }, function(error) {
+        // an error occurred
       });
     }
   };

@@ -19,7 +19,7 @@
 
             <div class="form-group">
               <label for="painLevel">Pain intensity</label>
-              <select class="form-control" name="painLevel" ng-model="painLevel" ng-required="true">
+              <select class="form-control" name="painLevel" ng-model="entry.painLevel" ng-required="true">
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -35,7 +35,7 @@
 
             <div class="form-group">
               <label for="joint">Joint affected</label>
-              <select class="form-control" name="joint" ng-model="joint" ng-required="true">
+              <select class="form-control" name="joint" ng-model="entry.joint" ng-required="true">
                 <option value="Right big toe">Right big toe</option>
                 <option value="Left big toe">Left big toe</option>
                 <option value="Right ankle">Right ankle</option>
@@ -50,7 +50,7 @@
 
             <div class="form-group">
               <label for="description">Description</label>
-              <textarea class="form-control" id="description" rows="4" name="description" ng-model="description"></textarea>
+              <textarea class="form-control" id="description" rows="4" name="description" ng-model="entry.description"></textarea>
             </div>
             <div class="form-group row text-center">
               <div class="col-sm-11">
