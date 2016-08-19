@@ -40,7 +40,8 @@ function($rootScope, $firebase, $location, $firebaseObject) {
         usersRef.child(newUser.uid).set({
           firstname: user.firstname,
           lastname: user.lastname,
-          email: user.email
+          email: user.email,
+          uid: newUser.uid
         });
         // logs user in after registration
         myObject.login(user);
