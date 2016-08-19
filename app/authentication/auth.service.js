@@ -20,7 +20,7 @@ function($rootScope, $firebase, $location, $firebaseObject) {
     }
   });
 
-  return {
+  var myObject = {
     login: function (user) {
       auth.signInWithEmailAndPassword(user.email,  user.password)
       .then(function(authUser) {
@@ -42,9 +42,8 @@ function($rootScope, $firebase, $location, $firebaseObject) {
           lastname: user.lastname,
           email: user.email
         });
-        $rootScope.$apply(function (){
-          $rootScope.message = "Thank you for registering, " + user.firstname;
-        });
+        // logs user in after registration
+        myObject.login(user);
       }).catch(function (error) {
         $rootScope.$apply(function (){
           $rootScope.message = error.message;
@@ -63,4 +62,6 @@ function($rootScope, $firebase, $location, $firebaseObject) {
       auth.signOut();
     },
   };
+
+  return myObject;
 }]);
