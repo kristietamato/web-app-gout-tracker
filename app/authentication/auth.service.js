@@ -60,13 +60,7 @@ function($rootScope, $firebase, $location, $firebaseObject) {
     },
 
     logout: function () {
-      auth.signOut().then(function() {
-        $rootScope.$apply(function (){
-          $location.path('/login');
-        });
-      }, function(error) {
-        // an error occurred
-      });
-    }
+      auth.signOut();
+    },
   };
 }]);
