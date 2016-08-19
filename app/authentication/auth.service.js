@@ -51,13 +51,6 @@ function($rootScope, $firebase, $location, $firebaseObject) {
       });
     },
 
-    addEntry: function (entry) {
-      dataRef.update({
-        painLevel: entry.painLevel,
-        joint: entry.joint
-      });
-    },
-
     logout: function () {
       auth.signOut();
     },

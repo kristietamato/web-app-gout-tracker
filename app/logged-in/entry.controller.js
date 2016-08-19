@@ -1,11 +1,9 @@
-myApp.controller('EntryController', ['$scope', 'Authentication', function($scope, Authentication) {
-  $scope.date = {
+myApp.controller('EntryController', ['$scope', '$rootScope',
+function($scope, $rootScope) {
+  $rootScope.date = {
           startDate: moment().subtract(1, "days"),
           endDate: moment()
       };
-  $scope.singleDate = moment();
+  $rootScope.singleDate = moment();
 
-  $scope.addEntry = function() {
-    Authentication.addEntry($scope.entry);
-  };
 }]);
