@@ -9,14 +9,17 @@
     <div class="table-responsive">
       <table class="table table-hover">
         <tr class="success">
-          <td>Start Date</td>
-          <td>End Date</td>
-          <td>Paint Intensity</td>
-          <td>Location</td>
-          <td>Description</td>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Paint Intensity</th>
+          <th>Location</th>
+          <th>Description</th>
         </tr>
         <tr ng-repeat="(entryKey, entry) in entries">
-          <td><button ng-click="deleteEntry(entryKey)">Delete </button> {{ entry.startDate }}</td>
+          <td>
+            <a><icon class="glyphicon glyphicon-trash" class="btn btn-secondary"
+                     ng-click="deleteEntry(entryKey)" title="Delete entry"></icon></a>
+            {{ entry.startDate }}</td>
           <td>{{ entry.endDate }}</td>
           <td>{{ entry.painLevel }}</td>
           <td>{{ entry.joint }}</td>
