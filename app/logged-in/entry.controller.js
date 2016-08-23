@@ -1,5 +1,5 @@
-myApp.controller('EntryController', ['$scope', '$rootScope', '$firebaseArray',
-function($scope, $rootScope, $firebaseArray) {
+myApp.controller('EntryController', ['$scope', '$rootScope', '$firebaseArray', '$location',
+function($scope, $rootScope, $firebaseArray, $location) {
 
   // daterangepicker script http://www.daterangepicker.com/#usage
   var startDateTime = moment().subtract(29, 'days');
@@ -40,6 +40,12 @@ function($scope, $rootScope, $firebaseArray) {
           'painLevel': $scope.entry.painLevel,
           'joint': $scope.entry.joint,
           'description': $scope.entry.description
+        }).then(function() {
+          $scope.entry.painLevel = '';
+          $scope.entry.joint = '';
+          $scope.entry.description = '';
+          startDateTime = moment().subtract(29, 'days');
+          endDateTime = moment();
         });
       }
     }
