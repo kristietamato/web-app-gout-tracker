@@ -50,8 +50,6 @@ function($scope, $rootScope, $firebaseArray, $location, EntryService) {
           endDateTime = moment();
         });
       }
-
-
     }
   });
 }]);

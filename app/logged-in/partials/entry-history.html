@@ -15,8 +15,8 @@
           <td>Location</td>
           <td>Description</td>
         </tr>
-        <tr ng-repeat="entry in entries">
-          <td>{{ entry.startDate }}</td>
+        <tr ng-repeat="(entryKey, entry) in entries">
+          <td><button ng-click="deleteEntry(entryKey)">Delete </button> {{ entry.startDate }}</td>
           <td>{{ entry.endDate }}</td>
           <td>{{ entry.painLevel }}</td>
           <td>{{ entry.joint }}</td>
