@@ -1,5 +1,5 @@
-myApp.controller('EntryController', ['$scope', '$rootScope', '$firebaseArray', '$location',
-function($scope, $rootScope, $firebaseArray, $location) {
+myApp.controller('EntryController', ['$scope', '$rootScope', '$firebaseArray', '$location', 'EntryService',
+function($scope, $rootScope, $firebaseArray, $location, EntryService) {
 
   // daterangepicker script http://www.daterangepicker.com/#usage
   var startDateTime = moment().subtract(29, 'days');
@@ -33,6 +33,8 @@ function($scope, $rootScope, $firebaseArray, $location) {
       var entriesInfo = $firebaseArray(entriesRef);
       cb(startDateTime, endDateTime);
 
+      EntryService.setEntries(entriesInfo);
+
       $scope.addEntry = function() {
         entriesInfo.$add({
           'startDate': startDateTime._d.toString(),
@@ -48,6 +50,8 @@ function($scope, $rootScope, $firebaseArray, $location) {
           endDateTime = moment();
         });
       }
+
+
     }
   });
 }]);
