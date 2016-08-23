@@ -37,11 +37,6 @@ myApp.config(['$routeProvider', function($routeProvider) {
       controller: 'SettingsController',
       controllerAs: 'settingsCtrl'
     }).
-    when('/logout', {
-      templateUrl: 'logged-in/partials/logout.html',
-      controller: 'LogoutController',
-      controllerAs: 'logoutCtrl'
-    }).
     otherwise({
       redirectTo: '/login'
     });

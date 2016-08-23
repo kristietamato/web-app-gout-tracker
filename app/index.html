@@ -30,6 +30,7 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
     <script type="text/javascript" src="components/angular-lib/angular-route.js"></script>
     <script type="text/javascript" src="components/angular-lib/angular-daterangepicker.min.js"></script>
+    <script type="text/javascript" src="components/angular-lib/angular-animate.js"></script>
 
     <!-- Firebase Auth -->
     <script src="https://www.gstatic.com/firebasejs/3.2.1/firebase.js"></script>
@@ -42,8 +43,14 @@
         storageBucket: "gout-tracker.appspot.com",
       };
       firebase.initializeApp(config);
+      var storage = firebase.storage();
+
+      // Points to the root reference
+      var storageRef = firebase.storage().ref();
     </script>
-    <script src="https://cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script>
+
+    <!-- AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/2.0.1/angularfire.min.js"></script>
 
     <!-- My scripts -->
     <script type="text/javascript" src="app.js"></script>
@@ -52,7 +59,8 @@
     <script type="text/javascript" src="logged-in/home.controller.js"></script>
     <script type="text/javascript" src="logged-in/entry.controller.js"></script>
     <script type="text/javascript" src="logged-in/history.controller.js"></script>
-    <script type="text/javascript" src="logged-in/logout.controller.js"></script>
+    <script type="text/javascript" src="authentication/logout.controller.js"></script>
+    <script type="text/javascript" src="logged-in/entry.service.js"></script>
   
   </head>
   

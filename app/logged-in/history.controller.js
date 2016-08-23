@@ -1,3 +1,4 @@
-myApp.controller('HistoryController', ['$scope', function($scope) {
-
+myApp.controller('HistoryController', ['$scope', 'EntryService',
+function($scope, EntryService) {
+  $scope.entries = EntryService.getEntries();
 }]);
