@@ -1,0 +1,93 @@
+<header>
+    <nav ng-include="'logged-in/partials/logged-in-nav.html'"></nav>
+</header>
+
+<div class="container">
+
+    <div class="jumbotron">
+        <h2 ng-show="currentUser">Hello, {{ currentUser.firstname }}</h2>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <h2>Add Entry</h2>
+
+                    <form class="form-signin" name="myform" ng-submit="addEntry()" novalidate>
+                        <div class="form-group">
+                            <label for="daterange" class="control-label">Time frame</label>
+                            <div id="reportrange" class="pull-right form-control" ng-required="true">
+                                <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;
+                                <span></span> <b class="caret"></b>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="painLevel">Pain intensity</label>
+                            <select class="form-control" name="painLevel" ng-model="entry.painLevel" ng-required="true">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="joint">Joint affected</label>
+                            <select class="form-control" name="joint" ng-model="entry.joint" ng-required="true">
+                                <option value="Right big toe">Right big toe</option>
+                                <option value="Left big toe">Left big toe</option>
+                                <option value="Right ankle">Right ankle</option>
+                                <option value="Left ankle">Left ankle</option>
+                                <option value="Right elbow">Right elbow</option>
+                                <option value="Left elbow">Left elbow</option>
+                                <option value="Right finger(s)">Right finger(s)</option>
+                                <option value="Left finger(s)">Left finger(s)</option>
+                                <option value="Other joint(s)">Other joint(s)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <textarea class="form-control" id="description" rows="4" name="description" ng-model="entry.description"></textarea>
+                        </div>
+                        <div class="form-group row text-center">
+                            <div class="col-sm-11">
+                                <p class="message error" ng-show="message">{{ message }}</p>
+                                <button type="submit" ng-disabled="myform.$invalid" class="btn btn-primary">Add entry</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        <h2>Entry History</h2>
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <tr class="success">
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Paint Intensity</th>
+                    <th>Location</th>
+                    <th>Description</th>
+                </tr>
+                <tr ng-repeat="(entryKey, entry) in entries">
+                    <td>
+                        <a><icon class="glyphicon glyphicon-trash" class="btn btn-secondary"
+                                 ng-click="deleteEntry(entryKey)" title="Delete entry"></icon></a>
+                        {{ entry.startDate }}</td>
+                    <td>{{ entry.endDate }}</td>
+                    <td>{{ entry.painLevel }}</td>
+                    <td>{{ entry.joint }}</td>
+                    <td>{{ entry.description }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+</div> <!-- /container -->

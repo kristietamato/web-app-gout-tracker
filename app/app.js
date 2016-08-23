@@ -12,20 +12,10 @@ myApp.config(['$routeProvider', function($routeProvider) {
       controller: 'AuthController',
       controllerAs: 'authCtrl'
     }).
-    when('/home', {
-      templateUrl: 'logged-in/partials/home.html',
-      controller: 'HomeController',
-      controllerAs: 'homeCtrl'
-    }).
-    when('/entry', {
-      templateUrl: 'logged-in/partials/add-entry.html',
-      controller: 'EntryController',
-      controllerAs: 'entryCtrl'
-    }).
-    when('/history', {
-      templateUrl: 'logged-in/partials/entry-history.html',
-      controller: 'HistoryController',
-      controllerAs: 'historyCtrl'
+    when('/entries', {
+      templateUrl: 'logged-in/partials/entries.html',
+      controller: 'EntriesController',
+      controllerAs: 'entriesCtrl'
     }).
     when('/analyze', {
       templateUrl: 'logged-in/partials/analyze.html',

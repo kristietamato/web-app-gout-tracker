@@ -25,7 +25,7 @@ function($rootScope, $firebase, $location, $firebaseObject) {
       auth.signInWithEmailAndPassword(user.email,  user.password)
       .then(function(authUser) {
         $rootScope.$apply(function (){
-          $location.path('/home');
+          $location.path('/entries');
         });
       }).catch(function (error) {
         $rootScope.$apply(function (){
