@@ -16,7 +16,8 @@
         <li><a href="#/entries">Entries</a></li>
         <!--<li><a href="#/analyze">Analyze</a></li>
         <li><a href="#/settings">Settings</a></li> -->
-        <li><a ng-href="#/login" ng-click="logout()">Log out</a></li>
+        <li><a ng-href="#/login" ng-show="currentUser" ng-click="logout()">
+          Log out ( {{ currentUser.firstname }} )</a></li>
       </ul>
     </div><!--/.nav-collapse -->
   </div>
