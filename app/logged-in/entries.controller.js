@@ -4,6 +4,10 @@ function($scope, $rootScope, $firebaseArray, $location, EntryService) {
   // daterangepicker script http://www.daterangepicker.com/#usage
   var startDateTime = moment().subtract(29, 'days');
   var endDateTime = moment();
+  var auth = firebase.auth();
+  var database = firebase.database();
+
+  $scope.letterLimit = 24;
 
   function cb(start, end) {
     $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
@@ -23,9 +27,6 @@ function($scope, $rootScope, $firebaseArray, $location, EntryService) {
   }, cb);
 
   cb(startDateTime, endDateTime);
-
-  var auth = firebase.auth();
-  var database = firebase.database();
 
   auth.onAuthStateChanged(function(authUser) {
     if (authUser) {
