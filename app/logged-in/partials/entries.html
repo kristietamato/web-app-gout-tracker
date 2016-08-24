@@ -5,6 +5,7 @@
 <div class="container">
 
     <div class="jumbotron">
+        <h4>New Entry</h4>
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -53,7 +54,7 @@
                         <div class="form-group row text-center">
                             <div class="col-sm-12">
                                 <p class="message error" ng-show="message">{{ message }}</p>
-                                <button type="submit" ng-disabled="myform.$invalid" class="btn btn-primary">Add entry</button>
+                                <button type="submit" ng-disabled="myform.$invalid" class="btn btn-primary">+</button>
                             </div>
                         </div>
                     </form>
@@ -61,7 +62,9 @@
                 </div>
             </div>
         </div>
-        <h4 class="ptm">Entry History</h4>
+    </div>
+    <div class="jumbotron">
+        <h4>Entry History</h4>
         <div class="table-responsive">
             <table class="table table-hover">
                 <tr class="success">
@@ -84,7 +87,9 @@
                 </tr>
             </table>
         </div>
-        <h4 class="ptm">Location vs. Time Period</h4>
+    </div>
+    <div class="jumbotron">
+        <h4>Location vs. Time Period</h4>
         <div id="chart_div" style="width: auto; height: 500px;"></div>
     </div>
 </div>
