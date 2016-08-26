@@ -9,8 +9,8 @@ myApp.controller('EntriesController', ['$scope', '$rootScope', '$firebaseArray',
 
     $scope.letterLimit = 24;
 
-    function cb(start, end) {
-      $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+    function formatDates(startDateTime, endDateTime) {
+      $('#reportrange').html(startDateTime.format('MMMM D, YYYY') + ' - ' + endDateTime.format('MMMM D, YYYY'));
     }
 
     $('#reportrange').daterangepicker({
@@ -24,15 +24,15 @@ myApp.controller('EntriesController', ['$scope', '$rootScope', '$firebaseArray',
         'This Month': [moment().startOf('month'), moment().endOf('month')],
         'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
       }
-    }, cb);
+    }, formatDates);
 
-    cb(startDateTime, endDateTime);
+    formatDates(startDateTime, endDateTime);
 
     auth.onAuthStateChanged(function(authUser) {
       if (authUser) {
         var entriesRef = database.ref('users/' + $rootScope.currentUser.$id + '/entries');
         var entriesInfo = $firebaseArray(entriesRef);
-        cb(startDateTime, endDateTime);
+        formatDates(startDateTime, endDateTime);
 
         $scope.entries = entriesInfo;
 
