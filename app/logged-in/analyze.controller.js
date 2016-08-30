@@ -9,11 +9,9 @@ myApp.controller('AnalyzeController', ['$scope', '$rootScope', '$location', 'Ent
       data.addColumn('string', 'Location');
       data.addColumn('date', 'Start Date of Occurence');
       data.addColumn('date', 'End Date of Occurence');
-      data.addColumn({type: 'string', role: 'tooltip'});
 
       for(i = 0; i < entriesData.length; i++) {
-        data.addRow([entriesData[i].joint, new Date(entriesData[i].startDate), new Date(entriesData[i].endDate),
-            entriesData[i].painLevel]);
+        data.addRow([entriesData[i].joint, new Date(entriesData[i].startDate), new Date(entriesData[i].endDate)]);
       }
 
       var options = {

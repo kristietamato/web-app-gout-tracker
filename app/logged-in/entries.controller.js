@@ -22,14 +22,16 @@ myApp.controller('EntriesController', ['$scope', '$rootScope', '$firebaseArray',
             EntryService.setEntries(entriesData);
 
             $scope.addEntry = function() {
+              var painIntensity = parseInt($scope.entry.painLevel);
+
               entriesInfo.$add({
                 'startDate': $scope.entry.startDate.toString(),
                 'endDate': $scope.entry.endDate.toString(),
-                'painLevel': $scope.entry.painLevel,
+                'painLevel': painIntensity,
                 'joint': $scope.entry.joint,
                 'description': $scope.entry.description
               }).then(function() {
-                $scope.entry.painLevel = '';
+                $scope.entry.painLevel = undefined;
                 $scope.entry.joint = '';
                 $scope.entry.description = '';
                 $scope.entry.startDate = '';
