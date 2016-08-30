@@ -1,45 +1,25 @@
 myApp.controller('EntriesController', ['$scope', '$rootScope', '$firebaseArray', '$location', 'EntryService',
   function($scope, $rootScope, $firebaseArray, $location, EntryService) {
 
-    // daterangepicker script http://www.daterangepicker.com/#usage
-    var startDateTime = moment().subtract(29, 'days');
-    var endDateTime = moment();
     var auth = firebase.auth();
     var database = firebase.database();
 
-    $scope.letterLimit = 24;
-
-    function formatDates(startDateTime, endDateTime) {
-      $('#reportrange').html(startDateTime.format('MMMM D, YYYY') + ' - ' + endDateTime.format('MMMM D, YYYY'));
-    }
-
-    $('#reportrange').daterangepicker({
-      startDate: startDateTime,
-      endDate: endDateTime,
-      ranges: {
-        'Today': [moment(), moment()],
-        'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-        'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-        'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-        'This Month': [moment().startOf('month'), moment().endOf('month')],
-        'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-      }
-    }, formatDates);
-
-    formatDates(startDateTime, endDateTime);
+    $scope.entry = {
+      startDate: new Date(),
+      endDate: new Date()
+    };
 
     auth.onAuthStateChanged(function(authUser) {
       if (authUser) {
         var entriesRef = database.ref('users/' + $rootScope.currentUser.$id + '/entries');
         var entriesInfo = $firebaseArray(entriesRef);
-        formatDates(startDateTime, endDateTime);
 
         $scope.entries = entriesInfo;
 
         $scope.addEntry = function() {
           entriesInfo.$add({
-            'startDate': startDateTime._d.toString(),
-            'endDate': endDateTime._d.toString(),
+            'startDate': $scope.entry.startDate.toString(),
+            'endDate': $scope.entry.endDate.toString(),
             'painLevel': $scope.entry.painLevel,
             'joint': $scope.entry.joint,
             'description': $scope.entry.description
@@ -47,8 +27,8 @@ myApp.controller('EntriesController', ['$scope', '$rootScope', '$firebaseArray',
             $scope.entry.painLevel = '';
             $scope.entry.joint = '';
             $scope.entry.description = '';
-            startDateTime = moment().subtract(29, 'days');
-            endDateTime = moment();
+            $scope.entry.startDate = '';
+            $scope.entry.endDate = '';
           });
         };
 
@@ -68,7 +48,7 @@ myApp.controller('EntriesController', ['$scope', '$rootScope', '$firebaseArray',
       data.addColumn('date', 'End Date of Occurence');
 
       data.addRows([
-        ['Right big toe', new Date(2000, 8, 5), new Date(2001, 1, 5)],
+        ['Right big toe', $scope.entry.startDate, $scope.entry.endDate],
         ['Left big toe', new Date(2001, 8, 5), new Date(2002, 1, 5)],
         ['Right ankle', new Date(2002, 8, 5), new Date(2003, 1, 5)],
         ['Left ankle', new Date(2003, 8, 5), new Date(2004, 1, 5)],
