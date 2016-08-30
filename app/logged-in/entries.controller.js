@@ -19,30 +19,7 @@ myApp.controller('EntriesController', ['$scope', '$rootScope', '$firebaseArray',
 
             $scope.entries = entriesData;
 
-            // Google Charts
-            google.charts.setOnLoadCallback(drawChart);
-
-            function drawChart() {
-              var data = new google.visualization.DataTable();
-              data.addColumn('string', 'Location');
-              data.addColumn('date', 'Start Date of Occurence');
-              data.addColumn('date', 'End Date of Occurence');
-
-              for(i = 0; i < entriesData.length; i++) {
-                data.addRow([entriesData[i].joint, new Date(entriesData[i].startDate), new Date(entriesData[i].endDate)]);
-              }
-
-              var options = {
-                height: 450,
-                timeline: {
-                  groupByRowLabel: true
-                }
-              };
-
-              var chart = new google.visualization.Timeline(document.getElementById('chart_div'));
-
-              chart.draw(data, options);
-            }
+            EntryService.setEntries(entriesData);
 
             $scope.addEntry = function() {
               entriesInfo.$add({
