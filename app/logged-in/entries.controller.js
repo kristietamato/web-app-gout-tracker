@@ -1,60 +1,50 @@
 myApp.controller('EntriesController', ['$scope', '$rootScope', '$firebaseArray', '$location', 'EntryService',
-function($scope, $rootScope, $firebaseArray, $location, EntryService) {
+  function($scope, $rootScope, $firebaseArray, $location, EntryService) {
 
-  // daterangepicker script http://www.daterangepicker.com/#usage
-  var startDateTime = moment().subtract(29, 'days');
-  var endDateTime = moment();
-  var auth = firebase.auth();
-  var database = firebase.database();
+    var auth = firebase.auth();
+    var database = firebase.database();
+    var entriesRef = database.ref('users/' + $rootScope.currentUser.$id + '/entries');
+    var entriesData = $firebaseArray(entriesRef);
 
-  $scope.letterLimit = 24;
+    $scope.entry = {
+      startDate: new Date(),
+      endDate: new Date()
+    };
 
-  function cb(start, end) {
-    $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
-  }
+    createEntries(entriesRef, entriesData);
 
-  $('#reportrange').daterangepicker({
-    startDate: startDateTime,
-    endDate: endDateTime,
-    ranges: {
-      'Today': [moment(), moment()],
-      'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-      'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-      'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-      'This Month': [moment().startOf('month'), moment().endOf('month')],
-      'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-    }
-  }, cb);
+    function createEntries(entriesRef, entriesInfo) {
+        auth.onAuthStateChanged(function(authUser) {
+          if (authUser) {
 
-  cb(startDateTime, endDateTime);
+            $scope.entries = entriesData;
 
-  auth.onAuthStateChanged(function(authUser) {
-    if (authUser) {
-      var entriesRef = database.ref('users/' + $rootScope.currentUser.$id + '/entries');
-      var entriesInfo = $firebaseArray(entriesRef);
-      cb(startDateTime, endDateTime);
+            EntryService.setEntries(entriesData);
 
-      $scope.entries = entriesInfo;
+            $scope.addEntry = function() {
+              var painIntensity = parseInt($scope.entry.painLevel);
 
-      $scope.addEntry = function() {
-        entriesInfo.$add({
-          'startDate': startDateTime._d.toString(),
-          'endDate': endDateTime._d.toString(),
-          'painLevel': $scope.entry.painLevel,
-          'joint': $scope.entry.joint,
-          'description': $scope.entry.description
-        }).then(function() {
-          $scope.entry.painLevel = '';
-          $scope.entry.joint = '';
-          $scope.entry.description = '';
-          startDateTime = moment().subtract(29, 'days');
-          endDateTime = moment();
+              entriesInfo.$add({
+                'startDate': $scope.entry.startDate.toString(),
+                'endDate': $scope.entry.endDate.toString(),
+                'painLevel': painIntensity,
+                'joint': $scope.entry.joint,
+                'description': $scope.entry.description
+              }).then(function() {
+                $scope.entry.painLevel = undefined;
+                $scope.entry.joint = '';
+                $scope.entry.description = '';
+                $scope.entry.startDate = '';
+                $scope.entry.endDate = '';
+              });
+            };
+
+            $scope.deleteEntry = function(entryKey) {
+              $scope.entries.$remove(entryKey);
+            };
+            return $scope.entries;
+          }
         });
-      };
-
-      $scope.deleteEntry = function(entryKey) {
-        $scope.entries.$remove(entryKey);
-      };
     }
-  });
-}]);
+  }
+]);
