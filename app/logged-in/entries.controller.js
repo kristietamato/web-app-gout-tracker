@@ -1,5 +1,5 @@
-myApp.controller('EntriesController', ['$scope', '$rootScope', '$firebaseArray', '$location', 'EntryService',
-  function($scope, $rootScope, $firebaseArray, $location, EntryService) {
+myApp.controller('EntriesController', ['$scope', '$rootScope', '$firebase', '$firebaseArray', '$location', 'EntryService',
+  function($scope, $rootScope, $firebase, $firebaseArray, $location, EntryService) {
 
     var auth = firebase.auth();
     var database = firebase.database();
@@ -14,12 +14,21 @@ myApp.controller('EntriesController', ['$scope', '$rootScope', '$firebaseArray',
     createEntries(entriesRef, entriesData);
 
     function createEntries(entriesRef, entriesInfo) {
+        // Run only if user is authenticated
         auth.onAuthStateChanged(function(authUser) {
           if (authUser) {
 
             $scope.entries = entriesData;
 
             EntryService.setEntries(entriesData);
+
+            entriesInfo.$loaded().then(function(data) {
+              $scope.entriesCount = entriesInfo.length;
+            });
+
+            entriesInfo.$watch(function(data) {
+              $scope.entriesCount = entriesInfo.length;
+            });
 
             $scope.addEntry = function() {
               var painIntensity = parseInt($scope.entry.painLevel);
@@ -43,6 +52,11 @@ myApp.controller('EntriesController', ['$scope', '$rootScope', '$firebaseArray',
               $scope.entries.$remove(entryKey);
             };
             return $scope.entries;
+          } else {
+             $rootScope.currentUser = '';
+             $rootScope.$apply(function (){
+               $location.path('/login');
+             });
           }
         });
     }
