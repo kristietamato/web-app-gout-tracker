@@ -6,6 +6,9 @@ myApp.controller('EntriesController', ['$scope', '$rootScope', '$firebase', '$fi
     var entriesRef = database.ref('users/' + $rootScope.currentUser.$id + '/entries');
     var entriesData = $firebaseArray(entriesRef);
 
+    $scope.orderEntries = "startDate";
+    $scope.direction = null;
+
     $scope.entry = {
       startDate: new Date(),
       endDate: new Date()
@@ -30,12 +33,15 @@ myApp.controller('EntriesController', ['$scope', '$rootScope', '$firebase', '$fi
               $scope.entriesCount = entriesInfo.length;
             });
 
+            var startDate = $scope.entry.startDate.toString().slice(0,24);
+            var endDate = $scope.entry.endDate.toString().slice(0,24);
+
             $scope.addEntry = function() {
               var painIntensity = parseInt($scope.entry.painLevel);
 
               entriesInfo.$add({
-                'startDate': $scope.entry.startDate.toString(),
-                'endDate': $scope.entry.endDate.toString(),
+                'startDate': startDate,
+                'endDate': endDate,
                 'painLevel': painIntensity,
                 'joint': $scope.entry.joint,
                 'description': $scope.entry.description

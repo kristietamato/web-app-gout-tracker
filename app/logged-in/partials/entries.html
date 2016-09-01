@@ -4,7 +4,19 @@
 
 <div class="container">
     <div class="jumbotron">
-        <h4>Entries {{ entriesCount }}</h4>
+        <h4>{{ entriesCount }} entries</h4>
+        <div class="form-group">
+            <span class="label">by: </span>
+            <select ng-model="orderEntries">
+                <option value="startDate">Start date</option>
+                <option value="painLevel">Pain Intensity</option>
+                <option value="joint">Location</option>
+            </select>
+            <label for="ascending"> ascending</label>
+            <input id="ascending" type="radio" ng-model="direction">
+            <label for="descending"> descending</label>
+            <input id="descending" type="radio" ng-model="direction" value="reverse">
+        </div>
         <div class="table-responsive">
             <table class="table table-hover">
                 <tr class="success">
@@ -14,10 +26,11 @@
                     <th>Location</th>
                     <th>Description</th>
                 </tr>
-                <tr ng-repeat="(entryKey, entry) in entries">
+                <tr ng-repeat="(entryKey, entry) in entries | orderBy:orderEntries:direction">
                     <td>
                         <a>
-                            <icon class="glyphicon glyphicon-trash" class="btn btn-secondary" ng-click="deleteEntry(entryKey)" title="Delete entry"></icon>
+                            <icon class="glyphicon glyphicon-trash" class="btn btn-secondary"
+                                  ng-click="deleteEntry(entryKey)" title="Delete entry"></icon>
                         </a>
                         {{ entry.startDate | limitTo:letterLimit }}</td>
                     <td>{{ entry.endDate | limitTo:letterLimit}}</td>
