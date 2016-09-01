@@ -12,7 +12,7 @@ myApp.controller('AnalyzeController', ['$scope', '$rootScope', '$location', 'Ent
       data.addColumn('date', 'Start Date of Occurence');
       data.addColumn('date', 'End Date of Occurence');
 
-      for(i = 0; i < entriesData.length; i++) {
+      for (i = 0; i < entriesData.length; i++) {
         data.addRow([entriesData[i].joint, new Date(entriesData[i].startDate), new Date(entriesData[i].endDate)]);
       }
 
@@ -27,40 +27,44 @@ myApp.controller('AnalyzeController', ['$scope', '$rootScope', '$location', 'Ent
 
       chart.draw(data, options);
     }
-      function barChart() {
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Location');
-        data.addColumn('number', 'Pain Intensity (out of 10)');
-      for(i = 0; i < entriesData.length; i++) {
+
+    function barChart() {
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'Location');
+      data.addColumn('number', 'Pain Intensity (out of 10)');
+      for (i = 0; i < entriesData.length; i++) {
         data.addRow([entriesData[i].joint, entriesData[i].painLevel]);
       }
 
       var options = {
-            colors: ['#b4092a'],
-            is3D:true,
-            vAxis: {
-                viewWindow: {
-                    min: 0,
-                    max: 10
-                },
-                ticks: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-            }
+        colors: ['#b4092a'],
+        is3D: true,
+        vAxis: {
+          viewWindow: {
+            min: 0,
+            max: 10
+          },
+          ticks: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        }
       };
 
-        barsVisualization = new google.visualization.ColumnChart(document.getElementById('bar-chart'));
-        barsVisualization.draw(data, options);
+      barsVisualization = new google.visualization.ColumnChart(document.getElementById('bar-chart'));
+      barsVisualization.draw(data, options);
 
-        // Add our over/out handlers.
-        google.visualization.events.addListener(barsVisualization, 'onmouseover', barMouseOver);
-        google.visualization.events.addListener(barsVisualization, 'onmouseout', barMouseOut);
-      }
+      // Add our over/out handlers.
+      google.visualization.events.addListener(barsVisualization, 'onmouseover', barMouseOver);
+      google.visualization.events.addListener(barsVisualization, 'onmouseout', barMouseOut);
+    }
 
-      function barMouseOver(e) {
-        barsVisualization.setSelection([e]);
-      }
+    function barMouseOver(e) {
+      barsVisualization.setSelection([e]);
+    }
 
-      function barMouseOut(e) {
-        barsVisualization.setSelection([{'row': null, 'column': null}]);
-      }
+    function barMouseOut(e) {
+      barsVisualization.setSelection([{
+        'row': null,
+        'column': null
+      }]);
+    }
   }
 ]);
