@@ -1,11 +1,11 @@
 # Gout Tracker v1.0
-An app that keeps track gouty arthritic attacks to help the afflicted learn more about their condition.
+A Webapp that keeps track gouty arthritic attacks to help the afflicted learn more about their condition.
 
 [See it live](http://gouttracker.tamato.org)
 
 ##Features
-* User account
-* Add pain entries to Firebase database
+* User account registration/login
+* Add pain entries to Firebase dynamic NoSQL database
 * Delete entries from database
 * Sort entries by start date, location, or pain intensity
 * See entries history
