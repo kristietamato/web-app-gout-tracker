@@ -33,15 +33,12 @@ myApp.controller('EntriesController', ['$scope', '$rootScope', '$firebase', '$fi
             $scope.entriesCount = entriesInfo.length;
           });
 
-          var startDate = $scope.entry.startDate.toString().slice(0, 24);
-          var endDate = $scope.entry.endDate.toString().slice(0, 24);
-
           $scope.addEntry = function() {
             var painIntensity = parseInt($scope.entry.painLevel);
 
             entriesInfo.$add({
-              'startDate': startDate,
-              'endDate': endDate,
+              'startDate': $scope.entry.startDate.toLocaleString(),
+              'endDate': $scope.entry.endDate.toLocaleString(),
               'painLevel': painIntensity,
               'joint': $scope.entry.joint,
               'description': $scope.entry.description
