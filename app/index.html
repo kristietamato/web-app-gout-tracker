@@ -27,15 +27,21 @@
 
   <!-- DateRangeTimePicker CSS -->
   <link href="https://cdn.rawgit.com/dalelotts/angular-bootstrap-datetimepicker/master/src/css/datetimepicker.css" rel="stylesheet">
+</head>
 
-  <!-- Angular libraries -->
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-  <script type="text/javascript" src="components/angular-lib/angular-route.js"></script>
-  <script type="text/javascript" src="components/angular-lib/angular-animate.js"></script>
+<body>
+<main ng-view>
+</main>
+</body>
 
-  <!-- Firebase Auth -->
-  <script src="https://www.gstatic.com/firebasejs/3.2.1/firebase.js"></script>
-  <script>
+<!-- Angular libraries -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+<script type="text/javascript" src="components/angular-lib/angular-route.js"></script>
+<script type="text/javascript" src="components/angular-lib/angular-animate.js"></script>
+
+<!-- Firebase Auth -->
+<script src="https://www.gstatic.com/firebasejs/3.2.1/firebase.js"></script>
+<script>
       // Initialize Firebase
       var config = {
         apiKey: "AIzaSyA4OAlKrt-T6RUn2NsYxeQFxytKi-DyJbc",
@@ -48,29 +54,20 @@
 
       // Points to the root reference
       var storageRef = firebase.storage().ref();
-    </script>
+</script>
 
-  <!-- AngularFire -->
-  <script src="https://cdn.firebase.com/libs/angularfire/2.0.1/angularfire.min.js"></script>
+<!-- AngularFire -->
+<script src="https://cdn.firebase.com/libs/angularfire/2.0.1/angularfire.min.js"></script>
 
-  <!-- My scripts -->
-  <script type="text/javascript" src="app.js"></script>
-  <script type="text/javascript" src="authentication/auth.service.js"></script>
-  <script type="text/javascript" src="authentication/auth.controller.js"></script>
-  <script type="text/javascript" src="authentication/logout.controller.js"></script>
-  <script type="text/javascript" src="logged-in/entry.service.js"></script>
-  <script type="text/javascript" src="logged-in/entries.controller.js"></script>
-  <script type="text/javascript" src="logged-in/analyze.controller.js"></script>
+<!-- My scripts -->
+<script type="text/javascript" src="app.js"></script>
+<script type="text/javascript" src="authentication/auth.service.js"></script>
+<script type="text/javascript" src="authentication/auth.controller.js"></script>
+<script type="text/javascript" src="authentication/logout.controller.js"></script>
+<script type="text/javascript" src="logged-in/entry.service.js"></script>
+<script type="text/javascript" src="logged-in/entries.controller.js"></script>
+<script type="text/javascript" src="logged-in/analyze.controller.js"></script>
 
-</head>
-
-<body>
-<main ng-view>
-</main>
-</body>
-
-<!-- Bootstrap core JavaScript
-================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script>window.jQuery || document.write('<script src="components/js/jquery.min.js"><\/script>')</script>
 <script src="components/js/ie10-viewport-bug-workaround.js"></script>
