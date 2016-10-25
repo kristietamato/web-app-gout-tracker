@@ -47,55 +47,80 @@
             <div class="row">
                 <div class="col-md-12">
                     <form class="form-signin form-inline" name="myform" ng-submit="addEntry()" novalidate>
-                        <div class="form-group">
-                            <input class="form-control" type="date" name="input" ng-model="entry.startDate"
-                                   ng-required="true" />
-                        </div>
-                        <div class="form-group">
-                            <input class="form-control" type="date" name="input" ng-model="entry.endDate"
-                                   ng-required="true" />
-                        </div>
-                        <div class="form-group">
-                            <select class="form-control" type="number" name="painLevel" ng-model="entry.painLevel"
-                                    ng-required="true">
-                                <option value="" disabled selected>Select Pain Intensity</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option value="10">10</option>
-                            </select>
-                        </div>
+                        <div class="col-md-12">
+                            <div class="dropdown form-group">
+                                <a class="dropdown-toggle" id="dropdownStart" role="button" data-toggle="dropdown" data-target="#">
+                                    <div class="input-group date">
+                                        <input type="text" class="form-control" data-ng-model="dateRangeStart" placeholder="Start Date">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                    </div>
+                                </a>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                    <datetimepicker data-ng-model="dateRangeStart"
+                                                    data-datetimepicker-config="{ dropdownSelector: '#dropdownStart', renderOn: 'end-date-changed' }"
+                                                    data-on-set-time="startDateOnSetTime()"
+                                                    data-before-render="startDateBeforeRender($dates)"></datetimepicker>
+                                </ul>
+                            </div>
 
-                        <div class="form-group">
-                            <select class="form-control" name="joint" ng-model="entry.joint" ng-required="true">
-                                <option value="" disabled selected>Select Joint Affected</option>
-                                <option value="Right big toe">Right big toe</option>
-                                <option value="Left big toe">Left big toe</option>
-                                <option value="Right ankle">Right ankle</option>
-                                <option value="Left ankle">Left ankle</option>
-                                <option value="Right elbow">Right elbow</option>
-                                <option value="Left elbow">Left elbow</option>
-                                <option value="Right finger(s)">Right finger(s)</option>
-                                <option value="Left finger(s)">Left finger(s)</option>
-                                <option value="Other joint(s)">Other joint(s)</option>
-                            </select>
+                            <div class="dropdown form-group">
+                                <a class="dropdown-toggle" id="dropdownEnd" role="button" data-toggle="dropdown" data-target="#">
+                                    <div class="input-group date">
+                                        <input type="text" class="form-control" data-ng-model="dateRangeEnd" placeholder="End Date">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                    </div>
+                                </a>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                    <datetimepicker data-ng-model="dateRangeEnd"
+                                                    data-datetimepicker-config="{ dropdownSelector: '#dropdownEnd', renderOn: 'start-date-changed' }"
+                                                    data-on-set-time="endDateOnSetTime()"
+                                                    data-before-render="endDateBeforeRender($view, $dates, $leftDate, $upDate, $rightDate)"></datetimepicker>
+                                </ul>
+                            </div>
                         </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <select class="form-control" type="number" name="painLevel" ng-model="entry.painLevel"
+                                        ng-required="true">
+                                    <option value="" disabled selected>Select Pain Intensity</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                </select>
+                            </div>
 
-                        <div class="form-group">
+                            <div class="form-group">
+                                <select class="form-control" name="joint" ng-model="entry.joint" ng-required="true">
+                                    <option value="" disabled selected>Select Joint Affected</option>
+                                    <option value="Right big toe">Right big toe</option>
+                                    <option value="Left big toe">Left big toe</option>
+                                    <option value="Right ankle">Right ankle</option>
+                                    <option value="Left ankle">Left ankle</option>
+                                    <option value="Right elbow">Right elbow</option>
+                                    <option value="Left elbow">Left elbow</option>
+                                    <option value="Right finger(s)">Right finger(s)</option>
+                                    <option value="Left finger(s)">Left finger(s)</option>
+                                    <option value="Other joint(s)">Other joint(s)</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
                             <textarea class="form-control" id="description" rows="1" name="description"
                                       ng-model="entry.description" placeholder="Description (optional)"
-                                      style="min-width: 250px;"></textarea>
-                        </div>
-                        <div class="form-group row text-center">
-                            <div class="col-sm-12">
-                                <p class="message error" ng-show="message">{{ message }}</p>
-                                <button type="submit" ng-disabled="myform.$invalid" class="btn btn-primary">+</button>
+                                      style="min-width: 180px;"></textarea>
+                            </div>
+                            <div class="form-group row text-center">
+                                <div class="col-sm-12">
+                                    <p class="message error" ng-show="message">{{ message }}</p>
+                                    <button type="submit" ng-disabled="myform.$invalid" class="btn btn-primary">+</button>
+                                </div>
                             </div>
                         </div>
                     </form>
