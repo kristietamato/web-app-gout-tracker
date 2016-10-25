@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ngRoute', 'firebase']);
+var myApp = angular.module('myApp', ['ngRoute', 'firebase', 'ui.bootstrap.datetimepicker']);
 
 myApp.config(['$routeProvider', function($routeProvider) {
   $routeProvider.

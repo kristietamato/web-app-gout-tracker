@@ -9,10 +9,44 @@ myApp.controller('EntriesController', ['$scope', '$rootScope', '$firebase', '$fi
     $scope.orderEntries = "startDate";
     $scope.direction = null;
 
-    $scope.entry = {
-      startDate: new Date(),
-      endDate: new Date()
-    };
+    /* Bindable functions
+     -----------------------------------------------*/
+    $scope.endDateBeforeRender = endDateBeforeRender
+    $scope.endDateOnSetTime = endDateOnSetTime
+    $scope.startDateBeforeRender = startDateBeforeRender
+    $scope.startDateOnSetTime = startDateOnSetTime
+
+    function startDateOnSetTime () {
+      $scope.$broadcast('start-date-changed');
+    }
+
+    function endDateOnSetTime () {
+      $scope.$broadcast('end-date-changed');
+    }
+
+    function startDateBeforeRender ($dates) {
+      if ($scope.dateRangeEnd) {
+        var activeDate = moment($scope.dateRangeEnd);
+
+        $dates.filter(function (date) {
+          return date.localDateValue() >= activeDate.valueOf()
+        }).forEach(function (date) {
+          date.selectable = false;
+        })
+      }
+    }
+
+    function endDateBeforeRender ($view, $dates) {
+      if ($scope.dateRangeStart) {
+        var activeDate = moment($scope.dateRangeStart).subtract(1, $view).add(1, 'minute');
+
+        $dates.filter(function (date) {
+          return date.localDateValue() <= activeDate.valueOf()
+        }).forEach(function (date) {
+          date.selectable = false;
+        })
+      }
+    }
 
     createEntries(entriesRef, entriesData);
 
@@ -37,8 +71,8 @@ myApp.controller('EntriesController', ['$scope', '$rootScope', '$firebase', '$fi
             var painIntensity = parseInt($scope.entry.painLevel);
 
             entriesInfo.$add({
-              'startDate': $scope.entry.startDate.toLocaleString(),
-              'endDate': $scope.entry.endDate.toLocaleString(),
+              'startDate': $scope.dateRangeStart.toLocaleString(),
+              'endDate': $scope.dateRangeEnd.toLocaleString(),
               'painLevel': painIntensity,
               'joint': $scope.entry.joint,
               'description': $scope.entry.description
@@ -46,8 +80,8 @@ myApp.controller('EntriesController', ['$scope', '$rootScope', '$firebase', '$fi
               $scope.entry.painLevel = undefined;
               $scope.entry.joint = '';
               $scope.entry.description = '';
-              $scope.entry.startDate = '';
-              $scope.entry.endDate = '';
+              $scope.dateRangeStart = '';
+              $scope.dateRangeEnd = '';
             });
           };
 
