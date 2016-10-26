@@ -50,7 +50,8 @@
                 <div class="dropdown form-group">
                     <a class="dropdown-toggle" id="dropdownStart" role="button" data-toggle="dropdown" data-target="#">
                         <div class="input-group date">
-                            <input type="text" class="form-control" data-ng-model="dateRangeStart" placeholder="Start Date">
+                            <input type="text" class="form-control" data-ng-model="dateRangeStart" placeholder="Start Date"
+                                   ng-required="true">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                         </div>
                     </a>
@@ -66,7 +67,8 @@
                 <div class="dropdown form-group">
                     <a class="dropdown-toggle" id="dropdownEnd" role="button" data-toggle="dropdown" data-target="#">
                         <div class="input-group date">
-                            <input type="text" class="form-control" data-ng-model="dateRangeEnd" placeholder="End Date">
+                            <input type="text" class="form-control" data-ng-model="dateRangeEnd" placeholder="End Date"
+                                   ng-required="true">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                         </div>
                     </a>
@@ -116,15 +118,14 @@
             </div>
             <div class="col-sm-5">
                 <div class="form-group">
-                        <textarea class="form-control" id="description" rows="1" name="description"
-                                  ng-model="entry.description" placeholder="Description (optional)"
-                                  style="min-width: 260px;"></textarea>
+                        <input class="form-control" id="description" name="description"
+                                  ng-model="entry.description" placeholder="Description (optional)" ng-required="false"></input>
                 </div>
             </div>
             <div class="col-sm-1">
                 <div class="form-group row text-center">
                     <div class="col-sm-12">
-                        <button type="submit" ng-disabled="myform.$invalid" class="btn btn-primary">+</span></button>
+                        <button type="submit" ng-disabled="myform.$invalid" class="btn btn-primary"> <i class="glyphicon glyphicon-plus"></i></button>
                     </div>
                 </div>
             </div>
