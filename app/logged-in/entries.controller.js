@@ -1,8 +1,6 @@
 myApp.controller('EntriesController', ['$scope', '$rootScope', '$firebase', '$firebaseArray', '$location', 'EntryService',
   function($scope, $rootScope, $firebase, $firebaseArray, $location, EntryService) {
 
-    var auth = firebase.auth();
-    var database = firebase.database();
     var entriesRef = database.ref('users/' + $rootScope.currentUser.$id + '/entries');
     var entriesData = $firebaseArray(entriesRef);
 

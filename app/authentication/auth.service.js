@@ -2,8 +2,6 @@ myApp.factory('Authentication',
 ['$rootScope', '$firebase', '$location', '$firebaseObject',
 function($rootScope, $firebase, $location, $firebaseObject) {
 
-  var auth = firebase.auth();
-  var database = firebase.database();
   var usersRef = database.ref('users');
   var dataRef = usersRef.child('entries');
 
