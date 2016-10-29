@@ -4,9 +4,10 @@
 
 <div class="container">
     <div class="jumbotron">
-        <h4>{{ entriesCount }} entries</h4>
+        <h2 class="h2 text-center">History <span class="h4">( {{ entriesCount }} entries )</span></h2>
+
         <div class="form-group">
-            <span class="label">by: </span>
+            <span class="h5">Order by: </span>
             <select ng-model="orderEntries">
                 <option value="startDate">Start date</option>
                 <option value="painLevel">Pain Intensity</option>
@@ -43,7 +44,7 @@
     </div>
 
     <div class="jumbotron">
-        <h4>New Entry</h4>
+        <h2 class="h2 text-center">New Entry</h2>
         <form name="myform" ng-submit="addEntry()" novalidate>
         <div class="row">
             <div class="col-sm-6">
