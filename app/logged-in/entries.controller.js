@@ -75,7 +75,7 @@ myApp.controller('EntriesController', ['$scope', '$rootScope', '$firebase', '$fi
               'endDate': $scope.dateRangeEnd.toLocaleString(),
               'painLevel': painIntensity,
               'joint': $scope.entry.joint,
-              'description': $scope.entry.description
+              'description': $scope.entry.description || null
             }).then(function() {
               $scope.entry.painLevel = undefined;
               $scope.entry.joint = '';
