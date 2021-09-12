@@ -1,7 +1,7 @@
 # Gout Tracker v1.0
 A Webapp that keeps track gouty arthritic attacks to help the afflicted learn more about their condition.
 
-[See it live](http://gouttracker.tamato.org)
+[See it live](https://kristietamato.github.io/web-app-gout-tracker/app/index.html)
 
 ##Features
 * User account registration/login
